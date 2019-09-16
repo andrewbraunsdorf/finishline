@@ -87,9 +87,23 @@ public class Card
 
 public class Deck
 {
-    public int size;
     public List<Card> cards;
-    
+
+    public Deck(int[] suits, int[] values, int numJokers)
+    {
+        foreach(var suit in suits)
+        {
+            foreach(var val in values)
+            {
+                var newCard = new Card(val, suit);
+                this.cards.Add(newCard);
+            }
+        }
+        for (int jkr =0; jkr < numJokers; jkr++)
+        {
+            this.cards.Add(new Card(0, 0));
+        }
+    }
 }
 
 public class Program
