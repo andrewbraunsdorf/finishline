@@ -129,6 +129,23 @@ public class Marker
     }
 }
   
+public class FLMarker : Marker
+{
+    public bool stopped;
+    public FLMarker(string name) : base(name)
+    {
+        this.stopped = false;
+    }
+
+    // parent has class but use this one instead of parents
+    public void Move(int spaces, int stopValue)
+    {
+        // pre-processing
+        this.Move(spaces);
+        // post-processing
+    }
+}
+  
 public class Player
 {
     public Marker[] markers;
