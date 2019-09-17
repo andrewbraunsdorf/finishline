@@ -116,15 +116,17 @@ public class Marker
 {
     public int position;
     public string name;
-    public bool stopped;
-
+    
     public Marker(string name)
     {
         this.position = -1;
         this.name = name;
-        this.stopped = false;
     }
-    public void move() { }
+
+    public virtual void Move(int spaces)
+    {
+        this.position += spaces;
+    }
 }
   
 public class Player
