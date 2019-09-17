@@ -99,9 +99,15 @@ public class Deck
                 this.cards.Add(newCard);
             }
         }
-        for (int jkr =0; jkr < numJokers; jkr++)
+
+    public void Shuffle(Random rand)
+    {
+        for( int index = this.cards.Count - 1; index > 0; index--)
         {
-            this.cards.Add(new Card(0, 0));
+            int position = rand.Next(index + 1);
+            Card temp = this.cards[index];
+            this.cards[index] = this.cards[position];
+            this.cards[position] = temp;
         }
     }
 }
