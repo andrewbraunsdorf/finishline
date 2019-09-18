@@ -154,6 +154,7 @@ public class Player
 {
     public Marker[] markers;
     public string name;
+  
     public Player(string name, string[] markerNames)
     {
         this.markers = new Marker[markerNames.Length];
@@ -163,6 +164,24 @@ public class Player
             this.markers[markerName] = new Marker(markerNames[markerName]);
         }
     }
+}
+
+  public string HasMarkersAt(int position)
+  {
+    string master = "";
+    foreach (var marker in this.markers)
+    {
+      if (marker.position == position)
+      {
+        master += marker.name;
+      }
+      else
+      {
+        master += " ";
+      }
+    }
+    return master;
+  }
 }
 
 public class FinishLine
