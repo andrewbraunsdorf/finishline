@@ -3,10 +3,10 @@ using System.Collections.Generic;
 
 // possible classes
 // die X
-// deck
+// deck X
 // card X
-// player
-// marker
+// player X
+// marker X
 // game or board
 
 public class Die
@@ -89,16 +89,20 @@ public class Deck
 {
     public List<Card> cards;
 
-    public Deck(int[] suits, int[] values, int numJokers)
+    public Deck(int[] values, int[] suits, int numJokers)
     {
         foreach(var suit in suits)
         {
             foreach(var val in values)
             {
                 var newCard = new Card(val, suit);
-                this.cards.Add(newCard);
             }
         }
+        for (int jkr = 0; jkr < numJokers; jkr++)
+        {
+          this.cards.Add(newCard); 
+        }
+    }
 
     public void Shuffle(Random rand)
     {
