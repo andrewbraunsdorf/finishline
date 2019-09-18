@@ -210,6 +210,44 @@ public class FinishLine
     this.redDie.Roll(rand);
     this.blackDie.Roll(rand);
   }
+  
+  public void DisplayBoard()
+  {
+    // how to display
+    // \t[SVV]\t[SVV] [SVV] [SVV]
+    // \t_MMM_\t_MMM
+    // ABC
+    // AB
+    // BC
+    // C
+    // A C
+
+    Console.Clear();
+    string master = "";
+    string cardRow = "\t";
+    string playerRow = "\t";
+    int counter = 0;
+    foreach (Card card in this.deck.cards)
+    {
+      cardRow += "|" + card.Display() + "|";
+      playerRow += " " + this.player1.HasMarkersAt(counter) + " ";
+      counter++;
+      if (counter % 9 == 0)
+      {
+        master += cardRow + "\n" + playerRow + "\n\n";
+        cardRow = "\t";
+        playerRow = "\t";
+      }
+      else
+      {
+        cardRow += "\t";
+        playerRow += "\t";
+      }
+    }
+    Console.WriteLine(master);
+  }
+
+}
 }
 
 public class Program
