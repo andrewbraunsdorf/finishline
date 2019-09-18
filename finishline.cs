@@ -197,6 +197,19 @@ public class FinishLine
     public Player player1;
     public int players;
     public Random rand;
+  
+   public FinishLine(int players, string player1Name)
+  {
+    this.players = players;
+    this.player1 = new Player(player1Name, this.MARKER_NAMES);
+    this.rand = new Random();
+    this.deck = new Deck(this.VALUES, this.SUITS, NUM_JOKERS);
+    this.redDie = new Die(6, 0xFF0000);
+    this.blackDie = new Die(6, 0x000000);
+    this.deck.Shuffle(rand);
+    this.redDie.Roll(rand);
+    this.blackDie.Roll(rand);
+  }
 }
 
 public class Program
