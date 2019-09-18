@@ -16,7 +16,7 @@ public class Die
   private int sides;
   public int color;
 
-  public Die(int sides, int color, Random rand)
+  public Die(int sides, int color)
   {
     this.sides = sides;
     this.color = color;
@@ -47,14 +47,14 @@ public class Card
 
   public int suit;
   public int val;
-  private Dictionary<int, string> suitMap = new Dictionary<int, string>
+  private Dictionary<int, string> suit_Map = new Dictionary<int, string>
   {
     {0, "\u2663"},
     {1, "\u2660"},
     {2, "\u2265"},
     {3, "\u2666"}
   };
-  private Dictionary<int, string> valMap = new Dictionary<int, string>
+  private Dictionary<int, string> val_Map = new Dictionary<int, string>
   {
     {1, "Ac"},
     {10, "10"},
@@ -78,10 +78,10 @@ public class Card
 
     if (this.valMap.ContainsKey(this.val))
     {
-      return this.suitMap[this.suit] + this.valMap[this.val];
+      return this.suit_Map[this.suit] + this.val_Map[this.val];
     }
 
-    return this.suitMap[this.suit] + "0" + this.val;
+    return this.suit_Map[this.suit] + "0" + this.val;
   }
 }
 
