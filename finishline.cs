@@ -363,9 +363,18 @@ namespace Finish_Line
         {
             while (true)
             {
-                Round();
-                //break;
+                Player winner = Round();
+                if (Round() != null)
+                {
+                    Console.WriteLine("Contrats {}! You win!", winner.name);
+                    break;
+                }
             }
+        }
+
+        private Bool didWin(Player player)
+        {
+            return player.HasMarkersAt(53) == "ABC";
         }
     }
 
