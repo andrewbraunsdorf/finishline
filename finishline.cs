@@ -249,49 +249,59 @@ namespace Finish_Line
 
         public void DisplayBoard()
         {
-            // how to display
-            // \t[SVV]\t[SVV] [SVV] [SVV]
-            // \t_MMM_\t_MMM
-
-
-
-            // ABC
-            // AB
-            // BC
-            // C
-            // A C
 
             Console.Clear();
             string master = "";
             string cardRow = "\t";
-            string playerRow = "\t";
+            string[] playerRow = new string[this.numPlayers];
+            initializePlayerRow(playerRow);
 
-            cardRow += "Player1";
-            playerRow += this.player1.HasMarkersAt(-1);
 
-            master += cardRow + "\n" + playerRow + "\n\n";
+
+            foreach (var player in players)
+            {
+                cardRow += player.name + "\t";
+                playerRow[0] += player.HasMarkersAt(-1) + "\t";
+            }
+
+            // cardRow += "Player1";
+            // playerRow += this.player1.HasMarkersAt(-1); 
+
+            master += cardRow + "\n" + playerRow + "\n\n"; //nf
             cardRow = "\t";
-            playerRow = "\t";
+            initializePlayerRow(playerRow);
 
             int counter = 0;
             foreach (Card card in this.deck.cards)
             {
                 cardRow += "|" + card.Display() + "|";
-                playerRow += " " + this.player1.HasMarkersAt(counter) + " ";
+                for(var count = 0; count < this.numPlayers; count++)
+                {
+                    playerRow[count] += " " + this.players[count].HasMarkersAt(counter) + " ";
+                }
+                playerRow += " " + this.player1.HasMarkersAt(counter) + " ";  //nf
                 counter++;
                 if (counter % 9 == 0)
                 {
-                    master += cardRow + "\n" + playerRow + "\n\n";
+                    master += cardRow + "\n";
+                    for (int count = 0; count < this.numPlayers; count++)
+                    {
+                        master += playerRow[count] + "\n";
+                    }
+                    master += "\n";
                     cardRow = "\t";
-                    playerRow = "\t";
+                    initializePlayerRow(playerRow);
                 }
                 else
                 {
                     cardRow += "\t";
-                    playerRow += "\t";
+                    for (var count = 0; count < this.numPlayers; count++)
+                    {
+                        playerRow[count] += "\t";
+                    }
+                    // playerRow += "\t";
                 }
             }
-
             Console.WriteLine(master);
         }
 
