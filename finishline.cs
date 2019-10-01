@@ -392,7 +392,7 @@ namespace Finish_Line
     {
         public static void Main(string[] args)
         {
-            var game = new FinishLine(1, "Player1");
+            var game = new FinishLine(2, new string[] { "Cliff", "Joe" });
             game.PlayGame();
         }
     }
